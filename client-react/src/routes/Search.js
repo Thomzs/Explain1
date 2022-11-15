@@ -1,5 +1,5 @@
 import {Allotment} from "allotment";
-import "allotment/dist/style.css";
+import "allotment/dist/style.min.css";
 import React, {useState} from 'react';
 import "antd/dist/antd.css";
 import {AsyncTypeahead} from "react-bootstrap-typeahead";
