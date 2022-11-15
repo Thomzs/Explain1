@@ -24,14 +24,20 @@ const TreeComponent = (props) => {
   const [treeData, setTreeData] = useState([]);
 
   const onLoadData = ({ key, children, id }) =>
-    new Promise((resolve) => {
+    new Promise((resolve, reject) => {
       if (children) {
         resolve();
         return;
       }
       setTimeout(async () => {
-        let children = await getTerritoryChildren(id);
-
+	  let children = [];
+	  	try {
+        	children = await getTerritoryChildren(id);
+		} catch (err) {
+			console.log(err);
+			alert("Une erreur s'est produite. Veuillez reessayer");
+			reject();
+		}
         setTreeData((origin) =>
           updateTreeData(origin, key, children.map((child, index) => {
             return { title: child.name, id: child.id, isLeaf: child.hasChildren !== 1, key: `${key}-${index}`}
@@ -46,6 +52,10 @@ const TreeComponent = (props) => {
           .then(territory => setTreeData([{
             title: territory.name, key: 0, isLeaf: territory.hasChildren !== 1, id: territory.id
           }]))
+		  .catch(err => {
+		  	console.log(err);
+			alert("Une Erreur s'est produite. Veuillez reessayer");
+		  });
       }
   }, [props.territory])
 

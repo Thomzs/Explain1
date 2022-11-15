@@ -20,7 +20,11 @@ const Search = () => {
       .then((items) => {
         setOptions(items);
         setIsLoading(false);
-      });
+      })
+	  .catch((err) => {
+	  	alert("Une erreur s'est produite. Veuillez ressayer.");
+		console.log(err);
+	  });
   };
 
   const updateOption = debounce((e) => setSingleSelections(e), 250);
