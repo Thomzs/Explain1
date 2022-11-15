@@ -1,7 +1,7 @@
 import {Allotment} from "allotment";
-import "allotment/dist/style.min.css";
+import "allotment/dist/style.css";
 import React, {useState} from 'react';
-import "antd/dist/antd.css";
+import "antd/dist/antd.min.css";
 import {AsyncTypeahead} from "react-bootstrap-typeahead";
 import {getTerritoryByName} from "../utils/api";
 import TreeComponent from "./components/TreeComponent";
