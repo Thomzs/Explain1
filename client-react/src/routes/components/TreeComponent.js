@@ -3,6 +3,7 @@ import React, {useState} from "react";
 import {getTerritoryChildren, getTerritoryInfo} from "../../utils/api";
 import {useEffect} from "react";
 
+//Construction de l'arbre
 const updateTreeData = (list, key, children) =>
   list.map((node) => {
     if (node.key === key) {
@@ -23,6 +24,7 @@ const updateTreeData = (list, key, children) =>
 const TreeComponent = (props) => {
   const [treeData, setTreeData] = useState([]);
 
+  //Au déploiement d'une node
   const onLoadData = ({ key, children, id }) =>
     new Promise((resolve, reject) => {
       if (children) {
@@ -46,6 +48,7 @@ const TreeComponent = (props) => {
       }, 1000);
     });
 
+  //Initiation du composant avec le territoire entré dans la bare de recherche
   useEffect(() => {
       if (props.territory !== null && props.territory.length === 1) {
         getTerritoryInfo(props.territory[0].id)
