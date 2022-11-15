@@ -25,8 +25,6 @@ const Search = () => {
 
   const updateOption = debounce((e) => setSingleSelections(e), 250);
 
-  // Bypass client-side filtering by returning `true`. Results are already
-  // filtered by the search endpoint, so no need to do it again.
   const filterBy = () => true;
 
   return (
@@ -55,7 +53,7 @@ const Search = () => {
           </div>
         </Allotment.Pane>
         <Allotment.Pane>
-          <div>C'est là qu'on affiche la liste des territoires sélectionnés</div>
+          <div>Details page</div>
         </Allotment.Pane>
       </Allotment>
     </section>
